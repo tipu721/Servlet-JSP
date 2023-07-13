@@ -15,20 +15,23 @@ public class LoginServlet extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter  pw = resp.getWriter();
 
+        req.getRequestDispatcher("link.jsp").include(req, resp);
 
-        String name = req.getParameter("name");
+
+        String userName = req.getParameter("userName");
         String pass = req.getParameter("password");
 
         if(pass.equals("admin123")){
             pw.print("You are successfully loged in");
-            pw.print("<br> Wellcome "+name);
+            pw.print("<br> Wellcome "+userName);
 
-            Cookie ck = new Cookie("name", name);
+            Cookie ck = new Cookie("name", userName);
             resp.addCookie(ck);
         }
         else{
             pw.print("User name or password is worng!");
             req.getRequestDispatcher("login.jsp").include(req, resp);
         }
+        pw.close();
     }
 }
