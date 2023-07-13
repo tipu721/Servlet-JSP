@@ -13,6 +13,15 @@ public class ProfileServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        resp.setContentType("text/html");
+        PrintWriter pw = resp.getWriter();
+
+         Cookie cookies[] = req.getCookies();
+
+         for(Cookie cookie: cookies){
+             pw.print(cookie.getName()  +"   "+cookie.getValue()+"<br>");
+         }
+
 
     }
 }
