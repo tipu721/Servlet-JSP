@@ -11,19 +11,6 @@ import java.io.PrintWriter;
 public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setContentType("text/html");
-        PrintWriter pw = resp.getWriter();
 
-        req.getRequestDispatcher("link.jsp").include(req, resp);
-
-        Cookie ck[] = req.getCookies();
-        for(Cookie cookie: ck){
-          if(cookie.getName().equals("name")){
-              cookie.setMaxAge(0);
-              break;
-          }
-        }
-
-        pw.print("You are successfully logged out!");
     }
 }
