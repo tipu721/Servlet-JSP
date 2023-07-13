@@ -16,9 +16,14 @@ public class LogoutServlet extends HttpServlet {
 
         req.getRequestDispatcher("link.jsp").include(req, resp);
 
-        Cookie cookie = new Cookie("name", "");
-        cookie.setMaxAge(0);
-        resp.addCookie(cookie);
+        Cookie ck[] = req.getCookies();
+        for(Cookie cookie: ck){
+          if(cookie.getName().equals("name")){
+              cookie.setMaxAge(0);
+              resp.addCookie(cookie);
+              break;
+          }
+        }
 
         pw.print("You are successfully logged out!");
     }
