@@ -20,7 +20,6 @@ public class LogoutServlet extends HttpServlet {
         for(Cookie cookie: ck){
           if(cookie.getName().equals("name")){
               cookie.setMaxAge(0);
-              resp.addCookie(cookie);
               break;
           }
         }
